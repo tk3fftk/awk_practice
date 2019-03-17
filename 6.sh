@@ -86,15 +86,15 @@ awk 'BEGIN {
 ## 重複を削除するawk芸
 ### aは連想配列となる
 ### a["aaa"], a["bbb"]が加算されない最初だけ表示される
-echo "aaa\nbbb\naaa" | awk '!a[$0]++'
+echo -e "aaa\nbbb\naaa" | awk '!a[$0]++'
 
 ### こうするとわかりやすい？
-echo "aaa\nbbb\naaa" | awk '!a[$0]++ END {for (aa in a){print aa, a[aa];}}'
+echo -e "aaa\nbbb\naaa" | awk '!a[$0]++ END {for (aa in a){print aa, a[aa];}}'
 ### aaa
 ### bbb
 ### bbb 1
 ### aaa 2
 
 ### 逆はこう
-echo "aaa\nbbb\naaa" | awk 'a[$0]++ == 1'
-aaa
+echo -e "aaa\nbbb\naaa" | awk 'a[$0]++ == 1'
+### aaa
